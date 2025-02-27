@@ -1,22 +1,28 @@
-import { Link } from 'react-router-dom';
-import { AuthedUserContext } from '../../App';
-import { useContext } from 'react';
+import { Link } from "react-router-dom";
+import { AuthedUserContext } from "../../App";
+import { useContext } from "react";
+import styles from './NavBar.module.css';
+// import Logo from '../../assets/images/logo.svg';
 
 const NavBar = ({ handleSignout }) => {
   const user = useContext(AuthedUserContext);
   return (
     <>
       {user ? (
-        <nav>
-          <ul>
-            <li>Welcome, {user.username}</li>
+        <nav className={styles.container}>
+        {/* <Link to='/'><img src={Logo} alt="A cute owl" /></Link>         */}
+        <ul>
             <li>
-              <Link to="/">Dashboard</Link>
+              <Link to="/">HOME</Link>
             </li>
             <li>
-              <Link to="" onClick={handleSignout}>
-                Sign Out
-              </Link>
+              <Link to="/hoots"> HOOT</Link>
+            </li>
+            <li>
+              <Link to="/hoots/new">NEW HOOT</Link>
+            </li>
+            <li>
+              <Link to='' onClick={handleSignout}>SIGN OUT</Link>
             </li>
           </ul>
         </nav>
